@@ -33,9 +33,9 @@ const progressBar = document.getElementById("progressBar");
 const progress = document.getElementById("progress");
 const currentTimeEl = document.getElementById("currentTime");
 const durationEl = document.getElementById("duration");
-const trackListEl = document.getElementById("trackList");
 const cueListEl = document.getElementById("cueList");
 const currentTrackNameEl = document.getElementById("currentTrackName");
+const trackDropdown = document.getElementById("trackDropdown");
 
 // Load saved data
 function loadSavedData() {
@@ -73,14 +73,13 @@ function formatTime(seconds) {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-// Create track list
-function createTrackList() {
+// Populate dropdown menu with tracks
+function populateDropdown() {
   tracks.forEach((track, index) => {
-    const trackItem = document.createElement("div");
-    trackItem.className = "track-item";
-    trackItem.innerHTML = `<div class="track-name">${track.name}</div>`;
-    trackItem.addEventListener("click", () => loadTrack(index));
-    trackListEl.appendChild(trackItem);
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = track.name;
+    trackDropdown.appendChild(option);
   });
 }
 
@@ -226,6 +225,14 @@ progressBar.addEventListener("click", (e) => {
 playPauseBtn.addEventListener("click", togglePlayPause);
 cueBtn.addEventListener("click", addCuePoint);
 
+// Handle dropdown change
+trackDropdown.addEventListener("change", (event) => {
+  const selectedIndex = parseInt(event.target.value, 10);
+  if (!isNaN(selectedIndex)) {
+    loadTrack(selectedIndex);
+  }
+});
+
 // Save position on pause
 audio.addEventListener("pause", () => {
   if (currentTrackIndex !== -1 && !isNaN(audio.currentTime)) {
@@ -244,4 +251,4 @@ audio.addEventListener("ended", () => {
 
 // Initialize
 loadSavedData();
-createTrackList();
+populateDropdown();

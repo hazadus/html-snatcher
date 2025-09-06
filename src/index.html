@@ -10,8 +10,6 @@
     <div class="player-container">
       <h1>🎵 Snatcher</h1>
 
-      <div class="track-list" id="trackList"></div>
-
       <div class="current-track">
         Текущий трек:
         <span class="current-track-name" id="currentTrackName">Не выбран</span>
@@ -30,6 +28,13 @@
       <div class="controls">
         <button id="playPauseBtn">▶️ Play</button>
         <button id="cueBtn">📍 Add Cue</button>
+      </div>
+
+      <div class="dropdown">
+        <label for="trackDropdown">Выберите трек:</label>
+        <select id="trackDropdown">
+          <option value="" disabled selected>Выберите трек</option>
+        </select>
       </div>
 
       <div class="cue-points">
