@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snatcher</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="player-container">
+      <h1>🎵 Snatcher</h1>
+
+      <div class="track-list" id="trackList"></div>
+
+      <div class="current-track">
+        Текущий трек:
+        <span class="current-track-name" id="currentTrackName">Не выбран</span>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar">
+          <div class="progress" id="progress"></div>
+        </div>
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="playPauseBtn">▶️ Play</button>
+        <button id="cueBtn">📍 Add Cue</button>
+      </div>
+
+      <div class="cue-points">
+        <h3>Cue Points</h3>
+        <div id="cueList" class="cue-list">
+          <span class="no-cues">Нет сохраненных cue-точек</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
